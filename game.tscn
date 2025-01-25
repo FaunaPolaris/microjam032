@@ -1,0 +1,93 @@
+[gd_scene load_steps=13 format=3 uid="uid://ctge2k5hrgwhx"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_5urr7"]
+[ext_resource type="Script" path="res://Game.gd" id="1_wjjox"]
+[ext_resource type="Texture2D" uid="uid://cpahkwub4pp2" path="res://icon.svg" id="2_oukye"]
+
+[sub_resource type="Gradient" id="Gradient_tjh5o"]
+offsets = PackedFloat32Array(0, 0.214286)
+colors = PackedColorArray(0.576471, 0.168627, 0, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_tay7l"]
+gradient = SubResource("Gradient_tjh5o")
+fill_from = Vector2(0.536842, 0.805263)
+fill_to = Vector2(0.521053, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n46td"]
+albedo_color = Color(0.360924, 0.18625, 0.134346, 1)
+albedo_texture = SubResource("GradientTexture2D_tay7l")
+
+[sub_resource type="BoxMesh" id="BoxMesh_yu5rd"]
+material = SubResource("StandardMaterial3D_n46td")
+size = Vector3(5, 1, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uwkio"]
+size = Vector3(5, 1, 2)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4kd6t"]
+height = 1.46506
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_auxnq"]
+size = Vector3(60, 0.2, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bbpyg"]
+albedo_color = Color(0.427451, 0.576471, 0.219608, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_87abg"]
+material = SubResource("StandardMaterial3D_bbpyg")
+size = Vector2(180, 180)
+
+[node name="game" type="Node3D"]
+script = ExtResource("1_wjjox")
+
+[node name="play_stage" type="StaticBody3D" parent="."]
+collision_layer = 8
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="play_stage"]
+mesh = SubResource("BoxMesh_yu5rd")
+skeleton = NodePath("../..")
+
+[node name="collision" type="CollisionShape3D" parent="play_stage"]
+shape = SubResource("BoxShape3D_uwkio")
+
+[node name="return_stage" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60, 0, 0)
+collision_layer = 8
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="return_stage"]
+mesh = SubResource("BoxMesh_yu5rd")
+skeleton = NodePath("../..")
+
+[node name="collision" type="CollisionShape3D" parent="return_stage"]
+shape = SubResource("BoxShape3D_uwkio")
+
+[node name="player" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+collision_mask = 8
+script = ExtResource("1_5urr7")
+
+[node name="body" type="CollisionShape3D" parent="player"]
+shape = SubResource("CapsuleShape3D_4kd6t")
+
+[node name="art" type="Sprite3D" parent="player"]
+transform = Transform3D(0.506685, 0, 0, 0, 1.04644, 0, 0, 0, 0.823879, 0, 0, 0)
+texture = ExtResource("2_oukye")
+
+[node name="vision" type="Camera3D" parent="player"]
+transform = Transform3D(1, 0, 0, 0, 0.953449, 0.301555, 0, -0.301555, 0.953449, 0, 1.20764, 5.41371)
+
+[node name="stage_light" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.837785, 0.546, 0, -0.546, 0.837785, 0, 2.5121, 3.02435)
+
+[node name="floor" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.894728, 0)
+collision_layer = 8
+collision_mask = 0
+
+[node name="colision" type="CollisionShape3D" parent="floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.1362, 0.437821, 0)
+shape = SubResource("BoxShape3D_auxnq")
+
+[node name="art" type="MeshInstance3D" parent="floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.8252, 0.40375, 0)
+mesh = SubResource("PlaneMesh_87abg")
