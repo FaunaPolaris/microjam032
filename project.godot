@@ -11,13 +11,17 @@ config_version=5
 [application]
 
 config/name="microjam032"
-run/main_scene="res://game.tscn"
+run/main_scene="res://Emotions/match_game.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [autoload]
 
-Game="*res://game.tscn"
+Global="*res://Emotions/Scripts/Global.gd"
+
+[display]
+
+window/stretch/mode="viewport"
 
 [rendering]
 

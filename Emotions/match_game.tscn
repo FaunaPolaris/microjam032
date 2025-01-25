@@ -1,0 +1,33 @@
+[gd_scene load_steps=2 format=3 uid="uid://mnebfkq3r5iw"]
+
+[ext_resource type="Script" path="res://Emotions/Scripts/game.gd" id="1_fd1df"]
+
+[node name="MatchGame" type="Node2D"]
+script = ExtResource("1_fd1df")
+
+[node name="Creation" type="Node2D" parent="."]
+
+[node name="intense_marker" type="Marker2D" parent="Creation"]
+position = Vector2(768, -64)
+
+[node name="angry_marker" type="Marker2D" parent="Creation"]
+position = Vector2(576, -64)
+
+[node name="sad_marker" type="Marker2D" parent="Creation"]
+position = Vector2(384, -64)
+
+[node name="Match" type="Node2D" parent="."]
+
+[node name="sad_match_marker" type="Marker2D" parent="Match"]
+position = Vector2(384, 384)
+
+[node name="angry_match_marker" type="Marker2D" parent="Match"]
+position = Vector2(576, 384)
+
+[node name="intense_match_marker" type="Marker2D" parent="Match"]
+position = Vector2(768, 384)
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
