@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://br285gqlphavt"]
+
+[ext_resource type="Script" path="res://Emotions/Scripts/intense_mvmnt.gd" id="1_aom6d"]
+[ext_resource type="Texture2D" uid="uid://b2cj8k2eafrcw" path="res://sprites/greensqr.png" id="2_3abgq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8eta4"]
+size = Vector2(112, 28)
+
+[node name="Intense_Mvmnt" type="Area2D"]
+script = ExtResource("1_aom6d")
+
+[node name="intense" type="Sprite2D" parent="."]
+scale = Vector2(0.499, 0.5)
+texture = ExtResource("2_3abgq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_8eta4")
+
+[connection signal="area_shape_entered" from="." to="." method="_on_Intense_Mvmnt_area_shape_entered"]
+[connection signal="area_shape_exited" from="." to="." method="_on_Intense_Mvmnt_area_shape_exited"]
