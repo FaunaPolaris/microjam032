@@ -1,93 +1,645 @@
-[gd_scene load_steps=13 format=3 uid="uid://ctge2k5hrgwhx"]
+[gd_scene load_steps=37 format=3 uid="uid://dxstwosplpvkc"]
 
-[ext_resource type="Script" path="res://player.gd" id="1_5urr7"]
-[ext_resource type="Script" path="res://Game.gd" id="1_wjjox"]
-[ext_resource type="Texture2D" uid="uid://cpahkwub4pp2" path="res://icon.svg" id="2_oukye"]
+[ext_resource type="Texture2D" uid="uid://bpnxbnprikskw" path="res://assets/sky.png" id="1_b6y5b"]
+[ext_resource type="Texture2D" uid="uid://203xjvw7t3ig" path="res://assets/cloud.png" id="1_q4um7"]
+[ext_resource type="Script" path="res://cloud.gd" id="2_8fqmy"]
+[ext_resource type="Texture2D" uid="uid://cmun734v63r8f" path="res://assets/stand.png" id="2_ou1bg"]
+[ext_resource type="Texture2D" uid="uid://dijg4pdobhxkh" path="res://assets/neutral_acting.png" id="3_7iey5"]
+[ext_resource type="Texture2D" uid="uid://b0ckqsw4fl4w1" path="res://assets/tree.png" id="3_8qlb7"]
+[ext_resource type="Texture2D" uid="uid://dedhyvmkwql4" path="res://assets/silhouettes.png" id="3_27m7r"]
+[ext_resource type="Texture2D" uid="uid://cfls3vruxdyof" path="res://assets/stage.png" id="3_jmtin"]
+[ext_resource type="Texture2D" uid="uid://nhnfl2mkiywo" path="res://assets/building.png" id="5_4kqwc"]
+[ext_resource type="Texture2D" uid="uid://cddicarr3ig3g" path="res://assets/interface_masks.png" id="10_rlv6t"]
+[ext_resource type="Texture2D" uid="uid://c7201n7ecd03y" path="res://assets/speak.png" id="11_m6ndt"]
 
-[sub_resource type="Gradient" id="Gradient_tjh5o"]
-offsets = PackedFloat32Array(0, 0.214286)
-colors = PackedColorArray(0.576471, 0.168627, 0, 1, 1, 1, 1, 1)
+[sub_resource type="Gradient" id="Gradient_xdu56"]
+offsets = PackedFloat32Array(0.993506)
+colors = PackedColorArray(0.521569, 0.576471, 0.243137, 1)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_tay7l"]
-gradient = SubResource("Gradient_tjh5o")
-fill_from = Vector2(0.536842, 0.805263)
-fill_to = Vector2(0.521053, 0)
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_r6p60"]
+gradient = SubResource("Gradient_xdu56")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n46td"]
-albedo_color = Color(0.360924, 0.18625, 0.134346, 1)
-albedo_texture = SubResource("GradientTexture2D_tay7l")
+[sub_resource type="AtlasTexture" id="AtlasTexture_lsxlw"]
+atlas = ExtResource("1_q4um7")
+region = Rect2(0, 0, 500, 180)
 
-[sub_resource type="BoxMesh" id="BoxMesh_yu5rd"]
-material = SubResource("StandardMaterial3D_n46td")
-size = Vector3(5, 1, 2)
+[sub_resource type="AtlasTexture" id="AtlasTexture_aeikr"]
+atlas = ExtResource("1_q4um7")
+region = Rect2(500, 0, 500, 180)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_uwkio"]
-size = Vector3(5, 1, 2)
+[sub_resource type="AtlasTexture" id="AtlasTexture_iw8ku"]
+atlas = ExtResource("1_q4um7")
+region = Rect2(1000, 0, 500, 180)
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4kd6t"]
-height = 1.46506
+[sub_resource type="SpriteFrames" id="SpriteFrames_3qc8d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lsxlw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aeikr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iw8ku")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_auxnq"]
-size = Vector3(60, 0.2, 2)
+[sub_resource type="AtlasTexture" id="AtlasTexture_cvi75"]
+atlas = ExtResource("3_27m7r")
+region = Rect2(250, 0, 250, 400)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bbpyg"]
-albedo_color = Color(0.427451, 0.576471, 0.219608, 1)
+[sub_resource type="AtlasTexture" id="AtlasTexture_ht5i6"]
+atlas = ExtResource("3_27m7r")
+region = Rect2(500, 0, 250, 400)
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_87abg"]
-material = SubResource("StandardMaterial3D_bbpyg")
-size = Vector2(180, 180)
+[sub_resource type="AtlasTexture" id="AtlasTexture_uar70"]
+atlas = ExtResource("3_27m7r")
+region = Rect2(750, 0, 250, 400)
 
-[node name="game" type="Node3D"]
-script = ExtResource("1_wjjox")
+[sub_resource type="AtlasTexture" id="AtlasTexture_yyr3r"]
+atlas = ExtResource("3_27m7r")
+region = Rect2(0, 0, 250, 400)
 
-[node name="play_stage" type="StaticBody3D" parent="."]
-collision_layer = 8
+[sub_resource type="SpriteFrames" id="SpriteFrames_66bb4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cvi75")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ht5i6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uar70")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yyr3r")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="play_stage"]
-mesh = SubResource("BoxMesh_yu5rd")
-skeleton = NodePath("../..")
+[sub_resource type="AtlasTexture" id="AtlasTexture_bc0r4"]
+atlas = ExtResource("3_27m7r")
+region = Rect2(500, 0, 250, 400)
 
-[node name="collision" type="CollisionShape3D" parent="play_stage"]
-shape = SubResource("BoxShape3D_uwkio")
+[sub_resource type="AtlasTexture" id="AtlasTexture_padg6"]
+atlas = ExtResource("3_27m7r")
+region = Rect2(750, 0, 250, 400)
 
-[node name="return_stage" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60, 0, 0)
-collision_layer = 8
+[sub_resource type="AtlasTexture" id="AtlasTexture_0wcnf"]
+atlas = ExtResource("3_27m7r")
+region = Rect2(0, 0, 250, 400)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="return_stage"]
-mesh = SubResource("BoxMesh_yu5rd")
-skeleton = NodePath("../..")
+[sub_resource type="AtlasTexture" id="AtlasTexture_7padu"]
+atlas = ExtResource("3_27m7r")
+region = Rect2(250, 0, 250, 400)
 
-[node name="collision" type="CollisionShape3D" parent="return_stage"]
-shape = SubResource("BoxShape3D_uwkio")
+[sub_resource type="SpriteFrames" id="SpriteFrames_tqlfh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bc0r4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_padg6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0wcnf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7padu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
-[node name="player" type="CharacterBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
-collision_mask = 8
-script = ExtResource("1_5urr7")
+[sub_resource type="Gradient" id="Gradient_upgtv"]
+offsets = PackedFloat32Array(0.0194805, 0.688312, 1)
+colors = PackedColorArray(0, 0, 0, 0, 0.838242, 0.621101, 0.165747, 0.243137, 0, 0, 0, 0.301961)
 
-[node name="body" type="CollisionShape3D" parent="player"]
-shape = SubResource("CapsuleShape3D_4kd6t")
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_xts7w"]
+gradient = SubResource("Gradient_upgtv")
+width = 1920
+height = 1080
+fill = 1
+fill_from = Vector2(0.504587, 0.815494)
+fill_to = Vector2(0.619266, 0.7421)
 
-[node name="art" type="Sprite3D" parent="player"]
-transform = Transform3D(0.506685, 0, 0, 0, 1.04644, 0, 0, 0, 0.823879, 0, 0, 0)
-texture = ExtResource("2_oukye")
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2i3sp"]
+size = Vector2(184, 358)
 
-[node name="vision" type="Camera3D" parent="player"]
-transform = Transform3D(1, 0, 0, 0, 0.953449, 0.301555, 0, -0.301555, 0.953449, 0, 1.20764, 5.41371)
+[sub_resource type="AtlasTexture" id="AtlasTexture_3hv5k"]
+atlas = ExtResource("3_7iey5")
+region = Rect2(0, 0, 250, 400)
 
-[node name="stage_light" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.837785, 0.546, 0, -0.546, 0.837785, 0, 2.5121, 3.02435)
+[sub_resource type="SpriteFrames" id="SpriteFrames_2ycln"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3hv5k")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
-[node name="floor" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.894728, 0)
-collision_layer = 8
-collision_mask = 0
+[sub_resource type="AtlasTexture" id="AtlasTexture_apj4a"]
+atlas = ExtResource("11_m6ndt")
+region = Rect2(0, 0, 440, 200)
 
-[node name="colision" type="CollisionShape3D" parent="floor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.1362, 0.437821, 0)
-shape = SubResource("BoxShape3D_auxnq")
+[sub_resource type="AtlasTexture" id="AtlasTexture_8i7ab"]
+atlas = ExtResource("11_m6ndt")
+region = Rect2(440, 0, 440, 200)
 
-[node name="art" type="MeshInstance3D" parent="floor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.8252, 0.40375, 0)
-mesh = SubResource("PlaneMesh_87abg")
+[sub_resource type="AtlasTexture" id="AtlasTexture_84d7b"]
+atlas = ExtResource("11_m6ndt")
+region = Rect2(880, 0, 440, 200)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xqq0s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_apj4a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8i7ab")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_84d7b")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="game" type="Node2D"]
+position = Vector2(14, -6)
+
+[node name="background" type="Node2D" parent="."]
+
+[node name="grass" type="Sprite2D" parent="background"]
+position = Vector2(-16, 565)
+scale = Vector2(32.9375, 5.71875)
+texture = SubResource("GradientTexture2D_r6p60")
+
+[node name="sky" type="Sprite2D" parent="background"]
+position = Vector2(-8.99994, -239)
+scale = Vector2(1.04167, 1.21111)
+texture = ExtResource("1_b6y5b")
+
+[node name="cloud" type="AnimatedSprite2D" parent="background"]
+position = Vector2(-788, -432)
+scale = Vector2(0.912, 0.6)
+sprite_frames = SubResource("SpriteFrames_3qc8d")
+autoplay = "default"
+script = ExtResource("2_8fqmy")
+
+[node name="cloud5" type="AnimatedSprite2D" parent="background"]
+position = Vector2(-296, -206)
+scale = Vector2(0.912, 0.6)
+sprite_frames = SubResource("SpriteFrames_3qc8d")
+autoplay = "default"
+script = ExtResource("2_8fqmy")
+
+[node name="cloud6" type="AnimatedSprite2D" parent="background"]
+position = Vector2(156, -412)
+scale = Vector2(0.912, 0.6)
+sprite_frames = SubResource("SpriteFrames_3qc8d")
+autoplay = "default"
+script = ExtResource("2_8fqmy")
+
+[node name="cloud7" type="AnimatedSprite2D" parent="background"]
+position = Vector2(92, -258)
+scale = Vector2(0.912, 0.6)
+sprite_frames = SubResource("SpriteFrames_3qc8d")
+autoplay = "default"
+script = ExtResource("2_8fqmy")
+
+[node name="cloud8" type="AnimatedSprite2D" parent="background"]
+position = Vector2(982, -170)
+scale = Vector2(0.912, 0.6)
+sprite_frames = SubResource("SpriteFrames_3qc8d")
+autoplay = "default"
+script = ExtResource("2_8fqmy")
+
+[node name="cloud9" type="AnimatedSprite2D" parent="background"]
+position = Vector2(1402, -360)
+scale = Vector2(0.912, 0.6)
+sprite_frames = SubResource("SpriteFrames_3qc8d")
+autoplay = "default"
+script = ExtResource("2_8fqmy")
+
+[node name="cloud10" type="AnimatedSprite2D" parent="background"]
+position = Vector2(-1426, -526)
+scale = Vector2(0.912, 0.6)
+sprite_frames = SubResource("SpriteFrames_3qc8d")
+autoplay = "default"
+script = ExtResource("2_8fqmy")
+
+[node name="cloud11" type="AnimatedSprite2D" parent="background"]
+position = Vector2(-1672, -96)
+scale = Vector2(0.912, 0.6)
+sprite_frames = SubResource("SpriteFrames_3qc8d")
+autoplay = "default"
+script = ExtResource("2_8fqmy")
+
+[node name="cloud2" type="AnimatedSprite2D" parent="background"]
+position = Vector2(708, -274)
+scale = Vector2(0.912, 0.6)
+sprite_frames = SubResource("SpriteFrames_3qc8d")
+autoplay = "default"
+script = ExtResource("2_8fqmy")
+
+[node name="cloud3" type="AnimatedSprite2D" parent="background"]
+position = Vector2(820, -470)
+scale = Vector2(0.912, 0.6)
+sprite_frames = SubResource("SpriteFrames_3qc8d")
+autoplay = "default"
+script = ExtResource("2_8fqmy")
+
+[node name="cloud4" type="AnimatedSprite2D" parent="background"]
+position = Vector2(-876, -162)
+scale = Vector2(0.912, 0.6)
+sprite_frames = SubResource("SpriteFrames_3qc8d")
+autoplay = "default"
+script = ExtResource("2_8fqmy")
+
+[node name="stage" type="Sprite2D" parent="background"]
+position = Vector2(0, 233)
+scale = Vector2(0.549576, 0.423333)
+texture = ExtResource("3_jmtin")
+
+[node name="background building" type="Sprite2D" parent="background"]
+position = Vector2(0, -252)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("5_4kqwc")
+
+[node name="tree" type="Sprite2D" parent="background"]
+position = Vector2(650, -182)
+scale = Vector2(1, 1)
+texture = ExtResource("3_8qlb7")
+
+[node name="tree3" type="Sprite2D" parent="background"]
+position = Vector2(-737, -226)
+scale = Vector2(1.22, 0.875417)
+texture = ExtResource("3_8qlb7")
+
+[node name="grandstand" type="Node2D" parent="."]
+position = Vector2(3, 249)
+
+[node name="left" type="Node2D" parent="grandstand"]
+
+[node name="person7" type="AnimatedSprite2D" parent="grandstand/left"]
+position = Vector2(-697, -292)
+scale = Vector2(0.4, 0.4)
+sprite_frames = SubResource("SpriteFrames_66bb4")
+autoplay = "default"
+
+[node name="person8" type="AnimatedSprite2D" parent="grandstand/left"]
+position = Vector2(-760, -282)
+scale = Vector2(0.4, 0.4)
+sprite_frames = SubResource("SpriteFrames_66bb4")
+autoplay = "default"
+
+[node name="person9" type="AnimatedSprite2D" parent="grandstand/left"]
+position = Vector2(-870, -288)
+scale = Vector2(0.4, 0.4)
+sprite_frames = SubResource("SpriteFrames_66bb4")
+autoplay = "default"
+
+[node name="people21" type="AnimatedSprite2D" parent="grandstand/left/person9"]
+position = Vector2(145, 45)
+scale = Vector2(1.005, 1.005)
+sprite_frames = SubResource("SpriteFrames_tqlfh")
+autoplay = "default"
+
+[node name="people22" type="AnimatedSprite2D" parent="grandstand/left/person9"]
+position = Vector2(512.5, 52.5)
+scale = Vector2(1.005, 1.005)
+sprite_frames = SubResource("SpriteFrames_tqlfh")
+autoplay = "default"
+
+[node name="step3" type="Sprite2D" parent="grandstand/left"]
+position = Vector2(-862, -184)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_ou1bg")
+
+[node name="person4" type="AnimatedSprite2D" parent="grandstand/left/step3"]
+position = Vector2(373.333, 26.6667)
+scale = Vector2(0.666667, 0.666667)
+sprite_frames = SubResource("SpriteFrames_66bb4")
+autoplay = "default"
+
+[node name="person5" type="AnimatedSprite2D" parent="grandstand/left/step3"]
+position = Vector2(153.333, 46.6667)
+scale = Vector2(0.666667, 0.666667)
+sprite_frames = SubResource("SpriteFrames_66bb4")
+autoplay = "default"
+
+[node name="person6" type="AnimatedSprite2D" parent="grandstand/left/step3"]
+position = Vector2(506.667, 58.3333)
+scale = Vector2(0.666667, 0.666667)
+sprite_frames = SubResource("SpriteFrames_66bb4")
+autoplay = "default"
+
+[node name="people18" type="AnimatedSprite2D" parent="grandstand/left"]
+position = Vector2(-918, -146)
+scale = Vector2(0.402, 0.402)
+sprite_frames = SubResource("SpriteFrames_tqlfh")
+autoplay = "default"
+
+[node name="people19" type="AnimatedSprite2D" parent="grandstand/left"]
+position = Vector2(-714, -139)
+scale = Vector2(0.402, 0.402)
+sprite_frames = SubResource("SpriteFrames_tqlfh")
+autoplay = "default"
+
+[node name="people20" type="AnimatedSprite2D" parent="grandstand/left"]
+position = Vector2(-855, -170)
+scale = Vector2(0.402, 0.402)
+sprite_frames = SubResource("SpriteFrames_tqlfh")
+autoplay = "default"
+
+[node name="step2" type="Sprite2D" parent="grandstand/left"]
+position = Vector2(-748, -66)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_ou1bg")
+
+[node name="person" type="AnimatedSprite2D" parent="grandstand/left/step2"]
+position = Vector2(436.667, 31.6666)
+scale = Vector2(0.666667, 0.666667)
+sprite_frames = SubResource("SpriteFrames_66bb4")
+autoplay = "default"
+
+[node name="person2" type="AnimatedSprite2D" parent="grandstand/left/step2"]
+position = Vector2(243.333, 50)
+scale = Vector2(0.666667, 0.666667)
+sprite_frames = SubResource("SpriteFrames_66bb4")
+autoplay = "default"
+
+[node name="person3" type="AnimatedSprite2D" parent="grandstand/left/step2"]
+position = Vector2(-201.667, 33.3333)
+scale = Vector2(0.666667, 0.666667)
+sprite_frames = SubResource("SpriteFrames_66bb4")
+autoplay = "default"
+
+[node name="people14" type="AnimatedSprite2D" parent="grandstand/left/step2"]
+position = Vector2(130, 73.3333)
+scale = Vector2(0.67, 0.67)
+sprite_frames = SubResource("SpriteFrames_tqlfh")
+autoplay = "default"
+
+[node name="people15" type="AnimatedSprite2D" parent="grandstand/left/step2"]
+position = Vector2(333.333, 66.6667)
+scale = Vector2(0.67, 0.67)
+sprite_frames = SubResource("SpriteFrames_tqlfh")
+autoplay = "default"
+
+[node name="people16" type="AnimatedSprite2D" parent="grandstand/left/step2"]
+position = Vector2(-93.3333, 68.3333)
+scale = Vector2(0.67, 0.67)
+sprite_frames = SubResource("SpriteFrames_tqlfh")
+autoplay = "default"
+
+[node name="people17" type="AnimatedSprite2D" parent="grandstand/left/step2"]
+position = Vector2(-15, 93.3333)
+scale = Vector2(0.67, 0.67)
+sprite_frames = SubResource("SpriteFrames_tqlfh")
+autoplay = "default"
+
+[node name="step" type="Sprite2D" parent="grandstand/left"]
+position = Vector2(-642, 62)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_ou1bg")
+
+[node name="people10" type="AnimatedSprite2D" parent="grandstand/left/step"]
+position = Vector2(255, 253.333)
+scale = Vector2(0.67, 0.67)
+sprite_frames = SubResource("SpriteFrames_tqlfh")
+autoplay = "default"
+
+[node name="people11" type="AnimatedSprite2D" parent="grandstand/left/step"]
+position = Vector2(546.667, 356.667)
+scale = Vector2(0.67, 0.67)
+sprite_frames = SubResource("SpriteFrames_tqlfh")
+autoplay = "default"
+
+[node name="people12" type="AnimatedSprite2D" parent="grandstand/left/step"]
+position = Vector2(905, 321.667)
+scale = Vector2(0.67, 0.67)
+sprite_frames = SubResource("SpriteFrames_tqlfh")
+autoplay = "default"
+
+[node name="people13" type="AnimatedSprite2D" parent="grandstand/left/step"]
+position = Vector2(-98.3333, 93.3333)
+scale = Vector2(0.67, 0.67)
+sprite_frames = SubResource("SpriteFrames_tqlfh")
+autoplay = "default"
+
+[node name="person10" type="AnimatedSprite2D" parent="grandstand/left/step"]
+position = Vector2(283.333, 94.9999)
+scale = Vector2(0.666667, 0.666667)
+sprite_frames = SubResource("SpriteFrames_66bb4")
+autoplay = "default"
+
+[node name="person11" type="AnimatedSprite2D" parent="grandstand/left/step"]
+position = Vector2(133.333, 141.667)
+scale = Vector2(0.666667, 0.666667)
+sprite_frames = SubResource("SpriteFrames_66bb4")
+autoplay = "default"
+
+[node name="person12" type="AnimatedSprite2D" parent="grandstand/left/step"]
+position = Vector2(698.333, 318.333)
+scale = Vector2(0.666667, 0.666667)
+sprite_frames = SubResource("SpriteFrames_66bb4")
+autoplay = "default"
+
+[node name="person13" type="AnimatedSprite2D" parent="grandstand/left/step"]
+position = Vector2(421.667, 308.333)
+scale = Vector2(0.666667, 0.666667)
+sprite_frames = SubResource("SpriteFrames_66bb4")
+autoplay = "default"
+
+[node name="right" type="Node2D" parent="grandstand"]
+
+[node name="person17" type="AnimatedSprite2D" parent="grandstand/right"]
+position = Vector2(717, -266)
+scale = Vector2(0.4, 0.4)
+sprite_frames = SubResource("SpriteFrames_66bb4")
+autoplay = "default"
+
+[node name="person18" type="AnimatedSprite2D" parent="grandstand/right"]
+position = Vector2(782, -254)
+scale = Vector2(0.4, 0.4)
+sprite_frames = SubResource("SpriteFrames_66bb4")
+autoplay = "default"
+
+[node name="people9" type="AnimatedSprite2D" parent="grandstand/right"]
+position = Vector2(853, -284)
+scale = Vector2(0.402, 0.402)
+sprite_frames = SubResource("SpriteFrames_tqlfh")
+autoplay = "default"
+
+[node name="step3" type="Sprite2D" parent="grandstand/right"]
+position = Vector2(840, -176)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_ou1bg")
+flip_h = true
+
+[node name="person15" type="AnimatedSprite2D" parent="grandstand/right/step3"]
+position = Vector2(-363.333, 58.3334)
+scale = Vector2(0.666667, 0.666667)
+sprite_frames = SubResource("SpriteFrames_66bb4")
+autoplay = "default"
+
+[node name="person16" type="AnimatedSprite2D" parent="grandstand/right/step3"]
+position = Vector2(-75, 55)
+scale = Vector2(0.666667, 0.666667)
+sprite_frames = SubResource("SpriteFrames_66bb4")
+autoplay = "default"
+
+[node name="people6" type="AnimatedSprite2D" parent="grandstand/right/step3"]
+position = Vector2(-240, 48.3333)
+scale = Vector2(0.67, 0.67)
+sprite_frames = SubResource("SpriteFrames_tqlfh")
+autoplay = "default"
+
+[node name="people7" type="AnimatedSprite2D" parent="grandstand/right/step3"]
+position = Vector2(-180, 81.6667)
+scale = Vector2(0.67, 0.67)
+sprite_frames = SubResource("SpriteFrames_tqlfh")
+autoplay = "default"
+
+[node name="people8" type="AnimatedSprite2D" parent="grandstand/right/step3"]
+position = Vector2(40, 51.6667)
+scale = Vector2(0.67, 0.67)
+sprite_frames = SubResource("SpriteFrames_tqlfh")
+autoplay = "default"
+
+[node name="step2" type="Sprite2D" parent="grandstand/right"]
+position = Vector2(720, -42)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_ou1bg")
+flip_h = true
+
+[node name="person19" type="AnimatedSprite2D" parent="grandstand/right/step2"]
+position = Vector2(-371.667, 23.3333)
+scale = Vector2(0.666667, 0.666667)
+sprite_frames = SubResource("SpriteFrames_66bb4")
+autoplay = "default"
+
+[node name="person20" type="AnimatedSprite2D" parent="grandstand/right/step2"]
+position = Vector2(-473.333, 63.3333)
+scale = Vector2(0.666667, 0.666667)
+sprite_frames = SubResource("SpriteFrames_66bb4")
+autoplay = "default"
+
+[node name="person21" type="AnimatedSprite2D" parent="grandstand/right/step2"]
+position = Vector2(225, 51.6667)
+scale = Vector2(0.666667, 0.666667)
+sprite_frames = SubResource("SpriteFrames_66bb4")
+autoplay = "default"
+
+[node name="people3" type="AnimatedSprite2D" parent="grandstand/right"]
+position = Vector2(572, 0)
+scale = Vector2(0.402, 0.402)
+sprite_frames = SubResource("SpriteFrames_tqlfh")
+autoplay = "default"
+
+[node name="people4" type="AnimatedSprite2D" parent="grandstand/right"]
+position = Vector2(626, -24)
+scale = Vector2(0.402, 0.402)
+sprite_frames = SubResource("SpriteFrames_tqlfh")
+autoplay = "default"
+
+[node name="people5" type="AnimatedSprite2D" parent="grandstand/right"]
+position = Vector2(749, -20)
+scale = Vector2(0.402, 0.402)
+sprite_frames = SubResource("SpriteFrames_tqlfh")
+autoplay = "default"
+
+[node name="step" type="Sprite2D" parent="grandstand/right"]
+position = Vector2(624, 78)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_ou1bg")
+flip_h = true
+
+[node name="person22" type="AnimatedSprite2D" parent="grandstand/right/step"]
+position = Vector2(-350, 101.667)
+scale = Vector2(0.666667, 0.666667)
+sprite_frames = SubResource("SpriteFrames_66bb4")
+autoplay = "default"
+
+[node name="person23" type="AnimatedSprite2D" parent="grandstand/right/step"]
+position = Vector2(-100, 300)
+scale = Vector2(0.666667, 0.666667)
+sprite_frames = SubResource("SpriteFrames_66bb4")
+autoplay = "default"
+
+[node name="person24" type="AnimatedSprite2D" parent="grandstand/right/step"]
+position = Vector2(-676.667, 318.333)
+scale = Vector2(0.666667, 0.666667)
+sprite_frames = SubResource("SpriteFrames_66bb4")
+autoplay = "default"
+
+[node name="person25" type="AnimatedSprite2D" parent="grandstand/right/step"]
+position = Vector2(-495, 220)
+scale = Vector2(0.8, 0.8)
+sprite_frames = SubResource("SpriteFrames_66bb4")
+autoplay = "default"
+
+[node name="person26" type="AnimatedSprite2D" parent="grandstand/right/step"]
+position = Vector2(113.333, 258.333)
+scale = Vector2(0.6, 0.6)
+sprite_frames = SubResource("SpriteFrames_66bb4")
+autoplay = "default"
+
+[node name="people" type="AnimatedSprite2D" parent="grandstand/right/step"]
+position = Vector2(-356.667, 336.667)
+scale = Vector2(0.67, 0.67)
+sprite_frames = SubResource("SpriteFrames_tqlfh")
+autoplay = "default"
+
+[node name="people2" type="AnimatedSprite2D" parent="grandstand/right/step"]
+position = Vector2(-225, 176.667)
+scale = Vector2(0.67, 0.67)
+sprite_frames = SubResource("SpriteFrames_tqlfh")
+autoplay = "default"
+
+[node name="foreground" type="Node2D" parent="."]
+
+[node name="spotlight" type="Sprite2D" parent="foreground"]
+position = Vector2(0, 16)
+scale = Vector2(1, 1.02963)
+texture = SubResource("GradientTexture2D_xts7w")
+
+[node name="character" type="CharacterBody2D" parent="."]
+position = Vector2(0, 272)
+scale = Vector2(0.7, 0.7)
+
+[node name="shape" type="CollisionShape2D" parent="character"]
+position = Vector2(4, -14)
+shape = SubResource("RectangleShape2D_2i3sp")
+
+[node name="art" type="AnimatedSprite2D" parent="character"]
+sprite_frames = SubResource("SpriteFrames_2ycln")
+
+[node name="Camera2D" type="Camera2D" parent="character"]
+position = Vector2(0, -387.143)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 46)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("10_rlv6t")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(273, 269)
+sprite_frames = SubResource("SpriteFrames_xqq0s")
+autoplay = "default"
