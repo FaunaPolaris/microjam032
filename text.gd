@@ -8,7 +8,6 @@ func	start_playing():
 
 func _on_text_speed_timeout() -> void:
 	lines_skipped += 1
-	$Label2.lines_skipped += 1
 	if lines_skipped == 25:
 		$text_speed.wait_time = 1.8
 	if lines_skipped == 50:
