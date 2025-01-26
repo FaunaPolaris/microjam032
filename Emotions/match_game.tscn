@@ -17,10 +17,10 @@ texture = ExtResource("3_vwtqv")
 [node name="Creation" type="Node2D" parent="."]
 
 [node name="intense_marker" type="Marker2D" parent="Creation"]
-position = Vector2(1105, 63)
+position = Vector2(1103, 63)
 
 [node name="angry_marker" type="Marker2D" parent="Creation"]
-position = Vector2(962, 64)
+position = Vector2(961, 64)
 
 [node name="sad_marker" type="Marker2D" parent="Creation"]
 position = Vector2(822, 64)
@@ -28,13 +28,13 @@ position = Vector2(822, 64)
 [node name="Match" type="Node2D" parent="."]
 
 [node name="sad_match_marker" type="Marker2D" parent="Match"]
-position = Vector2(822, 491)
+position = Vector2(822, 488)
 
 [node name="angry_match_marker" type="Marker2D" parent="Match"]
-position = Vector2(962, 491)
+position = Vector2(961, 488)
 
 [node name="intense_match_marker" type="Marker2D" parent="Match"]
-position = Vector2(1105, 491)
+position = Vector2(1103, 488)
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true

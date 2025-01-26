@@ -48,13 +48,13 @@ _data = {
 script = ExtResource("1_gm5y0")
 
 [node name="idle" type="Sprite2D" parent="."]
-visible = false
+modulate = Color(0.196078, 0.196078, 0.196078, 1)
 position = Vector2(2.18, 0)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("2_do6ew")
 
 [node name="wrong" type="Sprite2D" parent="."]
-modulate = Color(0.631373, 0, 0.176471, 0)
+modulate = Color(1, 1, 1, 0)
 position = Vector2(2.18, 0)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("2_do6ew")
