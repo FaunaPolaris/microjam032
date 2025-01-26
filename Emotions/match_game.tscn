@@ -1,13 +1,44 @@
-[gd_scene load_steps=6 format=3 uid="uid://mnebfkq3r5iw"]
+[gd_scene load_steps=12 format=3 uid="uid://mnebfkq3r5iw"]
 
 [ext_resource type="Script" path="res://Emotions/Scripts/game.gd" id="1_fd1df"]
 [ext_resource type="PackedScene" uid="uid://dxstwosplpvkc" path="res://game.tscn" id="2_2pc7b"]
 [ext_resource type="Texture2D" uid="uid://cddicarr3ig3g" path="res://assets/interface_masks.png" id="3_vwtqv"]
 [ext_resource type="FontFile" uid="uid://oyyrn07bj2hj" path="res://assets/font.png" id="4_okqec"]
+[ext_resource type="Texture2D" uid="uid://c4y3s45irlxsx" path="res://assets/logo.png" id="5_d37a6"]
+[ext_resource type="PackedScene" uid="uid://cd0dt0fax7g8p" path="res://keys.tscn" id="6_vhlq5"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_lcebt"]
 font = ExtResource("4_okqec")
 font_size = 26
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aj1r0"]
+atlas = ExtResource("5_d37a6")
+region = Rect2(0, 0, 500, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5h0yw"]
+atlas = ExtResource("5_d37a6")
+region = Rect2(500, 0, 500, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p8fnx"]
+atlas = ExtResource("5_d37a6")
+region = Rect2(1000, 0, 500, 300)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pf8sg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aj1r0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5h0yw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p8fnx")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="MatchGame" type="Node2D"]
 script = ExtResource("1_fd1df")
@@ -15,6 +46,7 @@ script = ExtResource("1_fd1df")
 [node name="game" parent="." instance=ExtResource("2_2pc7b")]
 
 [node name="InterfaceMasks" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(960, 488)
 scale = Vector2(0.722222, 0.722222)
 texture = ExtResource("3_vwtqv")
@@ -49,10 +81,20 @@ offset_left = 1059.0
 offset_top = 706.0
 offset_right = 1437.0
 offset_bottom = 858.0
-text = "Given the existence as uttered forth in the public works of Puncher and Wattmann of a personal God quaquaquaqua with white beard quaquaquaqua outside time without extension who from the heights of divine apathia divine athambia divine aphasia loves us dearly with some exceptions for reasons unknown "
+text = "Press Space to Start.
+"
 label_settings = SubResource("LabelSettings_lcebt")
 horizontal_alignment = 1
+vertical_alignment = 1
 autowrap_mode = 2
 max_lines_visible = 5
+
+[node name="Logo" type="AnimatedSprite2D" parent="."]
+position = Vector2(982, 270)
+sprite_frames = SubResource("SpriteFrames_pf8sg")
+autoplay = "default"
+
+[node name="keys" parent="." instance=ExtResource("6_vhlq5")]
+position = Vector2(1729, 932)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
