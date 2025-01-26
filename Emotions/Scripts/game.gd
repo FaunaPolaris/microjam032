@@ -13,6 +13,8 @@ var audio_player : AudioStreamPlayer
 var markers : Array = []
 var current_marker_index : int = 0
 
+var	game_started	: bool = false
+
 var pitch_shift_effect : AudioEffectPitchShift
 const AUDIO_BUS_INDEX = 0
 
@@ -41,12 +43,14 @@ func _ready():
 	pitch_shift_effect = AudioServer.get_bus_effect(AUDIO_BUS_INDEX, 0)
 	
 	pitch_shift_effect.pitch_scale = 1.8
-	
-	audio_player.play()
 
 func _process(delta):
 	var current_time = audio_player.get_playback_position()
 
+	if Input.is_action_just_pressed("ui_accept") and !game_started:
+		game_started = true
+		$Logo.hide()
+		audio_player.play()
 	if current_marker_index < markers.size():
 		var marker = markers[current_marker_index]
 		if current_time >= marker["time"]:
