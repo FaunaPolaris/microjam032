@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://dxstwosplpvkc"]
+[gd_scene load_steps=42 format=3 uid="uid://dxstwosplpvkc"]
 
 [ext_resource type="Texture2D" uid="uid://bpnxbnprikskw" path="res://assets/sky.png" id="1_b6y5b"]
 [ext_resource type="Texture2D" uid="uid://203xjvw7t3ig" path="res://assets/cloud.png" id="1_q4um7"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://bf6qqxqhn7o1v" path="res://assets/intense_acting.png" id="11_b5hcc"]
 [ext_resource type="Texture2D" uid="uid://c7201n7ecd03y" path="res://assets/speak.png" id="11_m6ndt"]
 [ext_resource type="Texture2D" uid="uid://blahsyqph37y" path="res://assets/drama_acting.png" id="12_cdu7t"]
+[ext_resource type="Script" path="res://character_sprite.gd" id="13_huear"]
 
 [sub_resource type="Gradient" id="Gradient_xdu56"]
 offsets = PackedFloat32Array(0.993506)
@@ -657,10 +658,10 @@ texture = SubResource("GradientTexture2D_xts7w")
 [node name="art" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 240)
 sprite_frames = SubResource("SpriteFrames_2ycln")
-animation = &"intense"
+script = ExtResource("13_huear")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(273, 269)
+[node name="talking" type="AnimatedSprite2D" parent="."]
+position = Vector2(285, 240)
 sprite_frames = SubResource("SpriteFrames_xqq0s")
 autoplay = "default"
 
