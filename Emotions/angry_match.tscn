@@ -1,7 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://dn3w0ajoaiq4a"]
+[gd_scene load_steps=10 format=3 uid="uid://dn3w0ajoaiq4a"]
 
 [ext_resource type="Script" path="res://Emotions/Scripts/angry_match.gd" id="1_axkmn"]
 [ext_resource type="Texture2D" uid="uid://rivaenorlfpy" path="res://assets/mask_anger.png" id="2_rs2vo"]
+[ext_resource type="AudioStream" uid="uid://darpurhb7ldgv" path="res://cheers_and_boos/cheer3.mp3" id="3_0tfo8"]
+[ext_resource type="AudioStream" uid="uid://sh0jj1ows7lk" path="res://cheers_and_boos/boo3.mp3" id="4_a6eoa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tfh6f"]
 size = Vector2(95.0213, 33.9434)
@@ -101,6 +103,14 @@ shape = SubResource("RectangleShape2D_tfh6f")
 libraries = {
 "": SubResource("AnimationLibrary_tvp6q")
 }
+
+[node name="cheer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_0tfo8")
+volume_db = -15.0
+
+[node name="boo" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_a6eoa")
+volume_db = -15.0
 
 [connection signal="area_shape_entered" from="." to="." method="_on_Sad_Match_area_shape_entered"]
 [connection signal="area_shape_exited" from="." to="." method="_on_Sad_Match_area_shape_exited"]

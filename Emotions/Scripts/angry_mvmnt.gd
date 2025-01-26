@@ -1,13 +1,12 @@
 extends Area2D
 
-var speed = 400
 var sensor = 0
 var emotion = 0
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	position.y += speed * delta
-	if position.y > 1150:
+	position.y += Global.speed * delta
+	if position.y > 600:
 		queue_free()
 	if sensor == 1:
 		if Global.angry_sensor == 1:
