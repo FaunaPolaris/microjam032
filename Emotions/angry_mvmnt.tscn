@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://rivaenorlfpy" path="res://assets/mask_anger.png" id="2_8jf4j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8eta4"]
-size = Vector2(91, 28)
+size = Vector2(91, 53)
 
 [node name="Angry_Mvmnt" type="Area2D"]
 script = ExtResource("1_a0ufn")
@@ -15,7 +15,7 @@ scale = Vector2(0.7, 0.701)
 texture = ExtResource("2_8jf4j")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(2, -14)
+position = Vector2(2, -14.5)
 shape = SubResource("RectangleShape2D_8eta4")
 
 [connection signal="area_shape_entered" from="." to="." method="_on_Angry_Mvmnt_area_shape_entered"]

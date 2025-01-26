@@ -6,7 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://bnugtwja83e5x" path="res://cheers_and_boos/boo1.mp3" id="4_os2yw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tfh6f"]
-size = Vector2(92.2892, 33.3186)
+size = Vector2(92.2892, 61.1741)
 
 [sub_resource type="Animation" id="Animation_6if8c"]
 length = 0.001
@@ -96,7 +96,7 @@ scale = Vector2(0.7, 0.7)
 texture = ExtResource("2_ei27h")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1.19093, -16.3443)
+position = Vector2(1.19093, -9.79667)
 shape = SubResource("RectangleShape2D_tfh6f")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
