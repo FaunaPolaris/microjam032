@@ -6,6 +6,8 @@ const Intense = preload("res://Emotions/intense_mvmnt.tscn")
 const SadMatch = preload("res://Emotions/sad_match.tscn")
 const AngryMatch = preload("res://Emotions/angry_match.tscn")
 const IntenseMatch = preload("res://Emotions/intense_match.tscn")
+const end_game = preload("res://end_game.tscn")
+
 
 var random = 0
 var RNG = RandomNumberGenerator.new()
@@ -47,8 +49,6 @@ func _process(delta):
 		if current_time >= calculate_spawn_time(marker["time"]):
 			spawn_note(marker["note"])
 			current_marker_index += 1 
-	print("hits: ", Global.hit)
-	print("miss: ",  Global.miss)
 
 func calculate_spawn_time(match_time: float) -> float:
 	var distance = $Match/angry_match_marker.global_position.y - $Creation/angry_marker.global_position.y 
@@ -60,15 +60,21 @@ func calculate_spawn_time(match_time: float) -> float:
 func load_audio():
 	audio_player = AudioStreamPlayer.new()
 	add_child(audio_player)
-
-	var audio_stream = preload("res://monologue.mp3")
+	
+	audio_player.finished.connect(_on_audio_finished)
+	var audio_stream = load("res://monologue.mp3")
 	audio_player.stream = audio_stream
 	audio_player.bus = "Master"
 	
 	AudioServer.add_bus_effect(AUDIO_BUS_INDEX_MAIN, AudioEffectPitchShift.new())
 	pitch_shift_effect = AudioServer.get_bus_effect(AUDIO_BUS_INDEX_MAIN, 0)
 	pitch_shift_effect.pitch_scale = 1.6
-	
+
+func	_on_audio_finished():
+	print("hits: ", Global.hit)
+	print("miss: ",  Global.miss)
+	get_tree().change_scene_to_packed(end_game)
+
 func load_markers_from_csv(file_path: String):
 	var file = FileAccess.open(file_path, FileAccess.READ)
 	var lines = file.get_as_text().strip_edges().split("\n")

@@ -1,0 +1,72 @@
+[gd_scene load_steps=11 format=3 uid="uid://c5vcdl4lrmjcx"]
+
+[ext_resource type="Texture2D" uid="uid://bikhbwwxbo7gl" path="res://assets/lose screen.png" id="1_82t7j"]
+[ext_resource type="Script" path="res://end_game.gd" id="1_qybm1"]
+[ext_resource type="Texture2D" uid="uid://dpn8e4lht70lb" path="res://assets/win screen.png" id="2_tvpy1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0nal4"]
+atlas = ExtResource("2_tvpy1")
+region = Rect2(0, 0, 960, 540)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2e77b"]
+atlas = ExtResource("2_tvpy1")
+region = Rect2(960, 0, 960, 540)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7rhmx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0nal4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2e77b")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pica0"]
+atlas = ExtResource("1_82t7j")
+region = Rect2(0, 0, 960, 540)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_766e6"]
+atlas = ExtResource("1_82t7j")
+region = Rect2(960, 0, 960, 540)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_elnsu"]
+atlas = ExtResource("1_82t7j")
+region = Rect2(1920, 0, 960, 540)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0dvx3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pica0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_766e6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_elnsu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="end_game" type="Node2D"]
+script = ExtResource("1_qybm1")
+
+[node name="imortalized" type="AnimatedSprite2D" parent="."]
+visible = false
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_7rhmx")
+centered = false
+
+[node name="ridiculed" type="AnimatedSprite2D" parent="."]
+visible = false
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_0dvx3")
+autoplay = "default"
+centered = false
