@@ -13,6 +13,9 @@ var audio_player : AudioStreamPlayer
 var markers : Array = []
 var current_marker_index : int = 0
 
+var pitch_shift_effect : AudioEffectPitchShift
+const AUDIO_BUS_INDEX = 0
+
 func _ready():
 	var sad_match = SadMatch.instantiate()
 	var angry_match = AngryMatch.instantiate()
@@ -31,7 +34,14 @@ func _ready():
 
 	var audio_stream = preload("res://monologue.mp3")
 	audio_player.stream = audio_stream
-
+	
+	audio_player.bus = "Master"
+	
+	AudioServer.add_bus_effect(AUDIO_BUS_INDEX, AudioEffectPitchShift.new())
+	pitch_shift_effect = AudioServer.get_bus_effect(AUDIO_BUS_INDEX, 0)
+	
+	pitch_shift_effect.pitch_scale = 1.8
+	
 	audio_player.play()
 
 func _process(delta):
