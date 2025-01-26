@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://dxstwosplpvkc"]
+[gd_scene load_steps=36 format=3 uid="uid://dxstwosplpvkc"]
 
 [ext_resource type="Texture2D" uid="uid://bpnxbnprikskw" path="res://assets/sky.png" id="1_b6y5b"]
 [ext_resource type="Texture2D" uid="uid://203xjvw7t3ig" path="res://assets/cloud.png" id="1_q4um7"]
@@ -9,7 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://dedhyvmkwql4" path="res://assets/silhouettes.png" id="3_27m7r"]
 [ext_resource type="Texture2D" uid="uid://cfls3vruxdyof" path="res://assets/stage.png" id="3_jmtin"]
 [ext_resource type="Texture2D" uid="uid://nhnfl2mkiywo" path="res://assets/building.png" id="5_4kqwc"]
-[ext_resource type="Texture2D" uid="uid://cddicarr3ig3g" path="res://assets/interface_masks.png" id="10_rlv6t"]
 [ext_resource type="Texture2D" uid="uid://c7201n7ecd03y" path="res://assets/speak.png" id="11_m6ndt"]
 
 [sub_resource type="Gradient" id="Gradient_xdu56"]
@@ -180,7 +179,7 @@ animations = [{
 }]
 
 [node name="game" type="Node2D"]
-position = Vector2(14, -6)
+position = Vector2(963, 538)
 
 [node name="background" type="Node2D" parent="."]
 
@@ -277,13 +276,12 @@ scale = Vector2(0.549576, 0.423333)
 texture = ExtResource("3_jmtin")
 
 [node name="background building" type="Sprite2D" parent="background"]
-position = Vector2(0, -252)
+position = Vector2(16, -252)
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("5_4kqwc")
 
 [node name="tree" type="Sprite2D" parent="background"]
 position = Vector2(650, -182)
-scale = Vector2(1, 1)
 texture = ExtResource("3_8qlb7")
 
 [node name="tree3" type="Sprite2D" parent="background"]
@@ -621,8 +619,7 @@ scale = Vector2(1, 1.02963)
 texture = SubResource("GradientTexture2D_xts7w")
 
 [node name="character" type="CharacterBody2D" parent="."]
-position = Vector2(0, 272)
-scale = Vector2(0.7, 0.7)
+position = Vector2(0, 240)
 
 [node name="shape" type="CollisionShape2D" parent="character"]
 position = Vector2(4, -14)
@@ -632,12 +629,7 @@ shape = SubResource("RectangleShape2D_2i3sp")
 sprite_frames = SubResource("SpriteFrames_2ycln")
 
 [node name="Camera2D" type="Camera2D" parent="character"]
-position = Vector2(0, -387.143)
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, 46)
-scale = Vector2(0.8, 0.8)
-texture = ExtResource("10_rlv6t")
+position = Vector2(0, -240.143)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(273, 269)

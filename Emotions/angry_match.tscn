@@ -1,15 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://dn3w0ajoaiq4a"]
+[gd_scene load_steps=8 format=3 uid="uid://dn3w0ajoaiq4a"]
 
 [ext_resource type="Script" path="res://Emotions/Scripts/angry_match.gd" id="1_axkmn"]
-[ext_resource type="Texture2D" uid="uid://bels8ihn8wenu" path="res://sprites/greysqr.png" id="2_nqd32"]
-[ext_resource type="Texture2D" uid="uid://nedq4ngd57mr" path="res://sprites/Red_X.png" id="3_vbfpo"]
-[ext_resource type="Texture2D" uid="uid://b76cxcde1bfjj" path="res://sprites/Check_Green.png" id="4_1clwb"]
+[ext_resource type="Texture2D" uid="uid://rivaenorlfpy" path="res://assets/mask_anger.png" id="2_rs2vo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tfh6f"]
-size = Vector2(112.527, 45.4084)
+size = Vector2(95.0213, 33.9434)
 
 [sub_resource type="Animation" id="Animation_7xkp7"]
 resource_name = "right"
+length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -17,14 +16,15 @@ tracks/0/path = NodePath("right:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.0333333, 0.166667, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+"values": [Color(1, 1, 1, 0), Color(0, 0.811765, 0.435294, 1), Color(0, 0.811765, 0.435294, 1), Color(0, 0.811765, 0.435294, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_vql8v"]
 resource_name = "wrong"
+length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -32,14 +32,42 @@ tracks/0/path = NodePath("wrong:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.0333333, 0.166667, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+"values": [Color(1, 1, 1, 0), Color(0.631373, 0, 0.176471, 1), Color(0.631373, 0, 0.176471, 1), Color(0.631373, 0, 0.176471, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_55q1e"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("right:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("wrong:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tvp6q"]
 _data = {
+"RESET": SubResource("Animation_55q1e"),
 "right": SubResource("Animation_7xkp7"),
 "wrong": SubResource("Animation_vql8v")
 }
@@ -48,20 +76,25 @@ _data = {
 script = ExtResource("1_axkmn")
 
 [node name="idle" type="Sprite2D" parent="."]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_nqd32")
+modulate = Color(0, 0, 0, 1)
+position = Vector2(2.18, 0)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("2_rs2vo")
 
 [node name="wrong" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0)
-scale = Vector2(0.11, 0.11)
-texture = ExtResource("3_vbfpo")
+position = Vector2(2.18, 0)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("2_rs2vo")
 
 [node name="right" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0)
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("4_1clwb")
+position = Vector2(2.18, 0)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("2_rs2vo")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2.94061, -17.3921)
 shape = SubResource("RectangleShape2D_tfh6f")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

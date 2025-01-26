@@ -1,15 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://4sowkw0ga52y"]
+[gd_scene load_steps=7 format=3 uid="uid://4sowkw0ga52y"]
 
 [ext_resource type="Script" path="res://Emotions/Scripts/intense_match.gd" id="1_26nia"]
-[ext_resource type="Texture2D" uid="uid://bels8ihn8wenu" path="res://sprites/greysqr.png" id="2_80dk8"]
-[ext_resource type="Texture2D" uid="uid://nedq4ngd57mr" path="res://sprites/Red_X.png" id="3_dhcjm"]
-[ext_resource type="Texture2D" uid="uid://b76cxcde1bfjj" path="res://sprites/Check_Green.png" id="4_1yl6n"]
+[ext_resource type="Texture2D" uid="uid://d2u8qx4sopfmk" path="res://assets/mask_intense.png" id="2_ei27h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tfh6f"]
-size = Vector2(112.527, 51.6568)
+size = Vector2(92.2892, 33.3186)
 
 [sub_resource type="Animation" id="Animation_7xkp7"]
 resource_name = "right"
+length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -17,10 +16,10 @@ tracks/0/path = NodePath("right:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+"values": []
 }
 
 [sub_resource type="Animation" id="Animation_vql8v"]
@@ -48,20 +47,23 @@ _data = {
 script = ExtResource("1_26nia")
 
 [node name="idle" type="Sprite2D" parent="."]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_80dk8")
+position = Vector2(2.18, 0)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("2_ei27h")
 
 [node name="wrong" type="Sprite2D" parent="."]
-modulate = Color(1, 1, 1, 0)
-scale = Vector2(0.11, 0.11)
-texture = ExtResource("3_dhcjm")
+modulate = Color(0.631373, 0, 0.176471, 1)
+position = Vector2(2.18, 0)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("2_ei27h")
 
 [node name="right" type="Sprite2D" parent="."]
-modulate = Color(1, 1, 1, 0)
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("4_1yl6n")
+position = Vector2(2.18, 0)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("2_ei27h")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1.19093, -16.3443)
 shape = SubResource("RectangleShape2D_tfh6f")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

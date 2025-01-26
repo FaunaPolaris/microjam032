@@ -1,19 +1,21 @@
 [gd_scene load_steps=4 format=3 uid="uid://dpj5548g1eqfi"]
 
 [ext_resource type="Script" path="res://Emotions/Scripts/angry_mvmnt.gd" id="1_a0ufn"]
-[ext_resource type="Texture2D" uid="uid://caux5fw4qrtrf" path="res://sprites/redsqr.png" id="2_0rq6k"]
+[ext_resource type="Texture2D" uid="uid://rivaenorlfpy" path="res://assets/mask_anger.png" id="2_8jf4j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8eta4"]
-size = Vector2(112, 28)
+size = Vector2(91, 28)
 
 [node name="Angry_Mvmnt" type="Area2D"]
 script = ExtResource("1_a0ufn")
 
 [node name="angry" type="Sprite2D" parent="."]
-scale = Vector2(0.499, 0.5)
-texture = ExtResource("2_0rq6k")
+position = Vector2(1.46, 0)
+scale = Vector2(0.7, 0.701)
+texture = ExtResource("2_8jf4j")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, -14)
 shape = SubResource("RectangleShape2D_8eta4")
 
 [connection signal="area_shape_entered" from="." to="." method="_on_Angry_Mvmnt_area_shape_entered"]
