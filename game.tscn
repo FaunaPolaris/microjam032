@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://dxstwosplpvkc"]
+[gd_scene load_steps=41 format=3 uid="uid://dxstwosplpvkc"]
 
 [ext_resource type="Texture2D" uid="uid://bpnxbnprikskw" path="res://assets/sky.png" id="1_b6y5b"]
 [ext_resource type="Texture2D" uid="uid://203xjvw7t3ig" path="res://assets/cloud.png" id="1_q4um7"]
@@ -9,7 +9,10 @@
 [ext_resource type="Texture2D" uid="uid://dedhyvmkwql4" path="res://assets/silhouettes.png" id="3_27m7r"]
 [ext_resource type="Texture2D" uid="uid://cfls3vruxdyof" path="res://assets/stage.png" id="3_jmtin"]
 [ext_resource type="Texture2D" uid="uid://nhnfl2mkiywo" path="res://assets/building.png" id="5_4kqwc"]
+[ext_resource type="Texture2D" uid="uid://ckk4dcioapjhc" path="res://assets/anger_acting.png" id="9_vtfe2"]
+[ext_resource type="Texture2D" uid="uid://bf6qqxqhn7o1v" path="res://assets/intense_acting.png" id="11_b5hcc"]
 [ext_resource type="Texture2D" uid="uid://c7201n7ecd03y" path="res://assets/speak.png" id="11_m6ndt"]
+[ext_resource type="Texture2D" uid="uid://blahsyqph37y" path="res://assets/drama_acting.png" id="12_cdu7t"]
 
 [sub_resource type="Gradient" id="Gradient_xdu56"]
 offsets = PackedFloat32Array(0.993506)
@@ -131,21 +134,54 @@ fill = 1
 fill_from = Vector2(0.504587, 0.815494)
 fill_to = Vector2(0.619266, 0.7421)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2i3sp"]
-size = Vector2(184, 358)
+[sub_resource type="AtlasTexture" id="AtlasTexture_ftro7"]
+atlas = ExtResource("9_vtfe2")
+region = Rect2(0, 0, 250, 400)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3hv5k"]
 atlas = ExtResource("3_7iey5")
+region = Rect2(0, 0, 250, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_byjfc"]
+atlas = ExtResource("11_b5hcc")
+region = Rect2(0, 0, 250, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ku0n1"]
+atlas = ExtResource("12_cdu7t")
 region = Rect2(0, 0, 250, 400)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_2ycln"]
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_ftro7")
+}],
+"loop": true,
+"name": &"angry",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_3hv5k")
 }],
 "loop": true,
 "name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_byjfc")
+}],
+"loop": true,
+"name": &"intense",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ku0n1")
+}],
+"loop": true,
+"name": &"sad",
 "speed": 5.0
 }]
 
@@ -618,20 +654,15 @@ position = Vector2(0, 16)
 scale = Vector2(1, 1.02963)
 texture = SubResource("GradientTexture2D_xts7w")
 
-[node name="character" type="CharacterBody2D" parent="."]
+[node name="art" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 240)
-
-[node name="shape" type="CollisionShape2D" parent="character"]
-position = Vector2(4, -14)
-shape = SubResource("RectangleShape2D_2i3sp")
-
-[node name="art" type="AnimatedSprite2D" parent="character"]
 sprite_frames = SubResource("SpriteFrames_2ycln")
-
-[node name="Camera2D" type="Camera2D" parent="character"]
-position = Vector2(0, -240.143)
+animation = &"intense"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(273, 269)
 sprite_frames = SubResource("SpriteFrames_xqq0s")
 autoplay = "default"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -0.143005)

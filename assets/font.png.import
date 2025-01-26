@@ -1,0 +1,25 @@
+[remap]
+
+importer="font_data_image"
+type="FontFile"
+uid="uid://oyyrn07bj2hj"
+path="res://.godot/imported/font.png-062c3597b68463316da4bb296970215a.fontdata"
+
+[deps]
+
+source_file="res://assets/font.png"
+dest_files=["res://.godot/imported/font.png-062c3597b68463316da4bb296970215a.fontdata"]
+
+[params]
+
+character_ranges=PackedStringArray("32-127")
+kerning_pairs=PackedStringArray("\\u0020 abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!,.? -70", "ijl!,. abcdefghijklmnopqrstuvwxyz!?,. -50", "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz atbcdefghijklmnopqrsuvwxyz!?,. -35", "t t -60", "ilj ilj -60", "ilj abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!,.? -50")
+columns=10
+rows=10
+image_margin=Rect2i(0, 0, 0, 0)
+character_margin=Rect2i(20, 0, 0, 0)
+ascent=0
+descent=0
+fallbacks=[]
+compress=true
+scaling_mode=2
