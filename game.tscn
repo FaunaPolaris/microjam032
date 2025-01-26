@@ -187,6 +187,7 @@ font_size = 26
 
 [node name="game" type="Node2D"]
 position = Vector2(14, -6)
+scale = Vector2(0.5, 0.5)
 
 [node name="background" type="Node2D" parent="."]
 
@@ -289,7 +290,6 @@ texture = ExtResource("5_4kqwc")
 
 [node name="tree" type="Sprite2D" parent="background"]
 position = Vector2(650, -182)
-scale = Vector2(1, 1)
 texture = ExtResource("3_8qlb7")
 
 [node name="tree3" type="Sprite2D" parent="background"]
