@@ -50,6 +50,7 @@ func _process(delta):
 	if Input.is_action_just_pressed("ui_accept") and !game_started:
 		game_started = true
 		$Logo.hide()
+		$Label.start_playing()
 		audio_player.play()
 	if current_marker_index < markers.size():
 		var marker = markers[current_marker_index]

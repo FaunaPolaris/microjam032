@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://mnebfkq3r5iw"]
+[gd_scene load_steps=13 format=3 uid="uid://mnebfkq3r5iw"]
 
 [ext_resource type="Script" path="res://Emotions/Scripts/game.gd" id="1_fd1df"]
 [ext_resource type="PackedScene" uid="uid://dxstwosplpvkc" path="res://game.tscn" id="2_2pc7b"]
 [ext_resource type="Texture2D" uid="uid://cddicarr3ig3g" path="res://assets/interface_masks.png" id="3_vwtqv"]
 [ext_resource type="FontFile" uid="uid://oyyrn07bj2hj" path="res://assets/font.png" id="4_okqec"]
 [ext_resource type="Texture2D" uid="uid://c4y3s45irlxsx" path="res://assets/logo.png" id="5_d37a6"]
+[ext_resource type="Script" path="res://text.gd" id="5_tv51t"]
 [ext_resource type="PackedScene" uid="uid://cd0dt0fax7g8p" path="res://keys.tscn" id="6_vhlq5"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_lcebt"]
@@ -76,10 +77,10 @@ position = Vector2(1103, 488)
 autostart = true
 
 [node name="Label" type="Label" parent="."]
-offset_left = 1059.0
-offset_top = 706.0
-offset_right = 1437.0
-offset_bottom = 858.0
+offset_left = 1073.0
+offset_top = 708.0
+offset_right = 1434.0
+offset_bottom = 803.0
 text = "Press Space to Start.
 "
 label_settings = SubResource("LabelSettings_lcebt")
@@ -87,6 +88,111 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 max_lines_visible = 5
+script = ExtResource("5_tv51t")
+
+[node name="Label2" type="Label" parent="Label"]
+offset_left = -23.0
+offset_top = 7.0
+offset_right = 22.0
+offset_bottom = 151.0
+text = "0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90"
+label_settings = SubResource("LabelSettings_lcebt")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+max_lines_visible = 5
+
+[node name="text_speed" type="Timer" parent="Label"]
+wait_time = 2.4
 
 [node name="Logo" type="AnimatedSprite2D" parent="."]
 position = Vector2(982, 270)
@@ -97,3 +203,4 @@ autoplay = "default"
 position = Vector2(1729, 932)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Label/text_speed" to="Label" method="_on_text_speed_timeout"]
