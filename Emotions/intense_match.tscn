@@ -110,7 +110,7 @@ volume_db = -15.0
 
 [node name="boo" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_os2yw")
-volume_db = -15.0
+volume_db = -13.0
 
 [connection signal="area_shape_entered" from="." to="." method="_on_Sad_Match_area_shape_entered"]
 [connection signal="area_shape_exited" from="." to="." method="_on_Sad_Match_area_shape_exited"]

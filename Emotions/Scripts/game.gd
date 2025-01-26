@@ -47,6 +47,14 @@ func _process(delta):
 		if current_time >= calculate_spawn_time(marker["time"]):
 			spawn_note(marker["note"])
 			current_marker_index += 1 
+	if Global.miss > 10:
+		#implement game over
+		pass
+
+func _on_audio_finished():
+	#implement win
+	
+	pass             
 
 func calculate_spawn_time(match_time: float) -> float:
 	var distance = $Match/angry_match_marker.global_position.y - $Creation/angry_marker.global_position.y 
@@ -62,7 +70,7 @@ func load_audio():
 	var audio_stream = preload("res://monologue.mp3")
 	audio_player.stream = audio_stream
 	audio_player.bus = "Master"
-	
+	audio_player.finished.connect(_on_audio_finished)
 	AudioServer.add_bus_effect(AUDIO_BUS_INDEX_MAIN, AudioEffectPitchShift.new())
 	pitch_shift_effect = AudioServer.get_bus_effect(AUDIO_BUS_INDEX_MAIN, 0)
 	pitch_shift_effect.pitch_scale = 1.8

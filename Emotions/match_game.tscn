@@ -6,7 +6,7 @@
 [ext_resource type="FontFile" uid="uid://oyyrn07bj2hj" path="res://assets/font.png" id="4_okqec"]
 [ext_resource type="Texture2D" uid="uid://c4y3s45irlxsx" path="res://assets/logo.png" id="5_d37a6"]
 [ext_resource type="Script" path="res://text.gd" id="5_tv51t"]
-[ext_resource type="PackedScene" uid="uid://cd0dt0fax7g8p" path="res://keys.tscn" id="6_vhlq5"]
+[ext_resource type="PackedScene" path="res://keys.tscn" id="6_vhlq5"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_lcebt"]
 font = ExtResource("4_okqec")
@@ -92,6 +92,7 @@ script = ExtResource("5_tv51t")
 
 [node name="Label2" type="Label" parent="Label"]
 visible = false
+layout_mode = 0
 offset_left = -23.0
 offset_top = 7.0
 offset_right = 22.0
