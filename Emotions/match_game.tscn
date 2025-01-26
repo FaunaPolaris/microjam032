@@ -22,7 +22,7 @@ texture = ExtResource("3_vwtqv")
 [node name="Creation" type="Node2D" parent="."]
 
 [node name="intense_marker" type="Marker2D" parent="Creation"]
-position = Vector2(1103, 63)
+position = Vector2(1103, 64)
 
 [node name="angry_marker" type="Marker2D" parent="Creation"]
 position = Vector2(961, 64)

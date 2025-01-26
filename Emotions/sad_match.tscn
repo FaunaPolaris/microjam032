@@ -1,7 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://dxeksuid17rly"]
+[gd_scene load_steps=9 format=3 uid="uid://dxeksuid17rly"]
 
 [ext_resource type="Script" path="res://Emotions/Scripts/sad_match.gd" id="1_gm5y0"]
 [ext_resource type="Texture2D" uid="uid://bg2sgd3k3nuvn" path="res://assets/mask_sad.png" id="2_do6ew"]
+[ext_resource type="AudioStream" uid="uid://dkjlxo21cn4fq" path="res://cheers_and_boos/cheer2.mp3" id="3_auya8"]
+[ext_resource type="AudioStream" uid="uid://bocb11x0mlyhy" path="res://cheers_and_boos/boo2.mp3" id="4_3qvqa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tfh6f"]
 size = Vector2(92.631, 34.5639)
@@ -73,6 +75,14 @@ shape = SubResource("RectangleShape2D_tfh6f")
 libraries = {
 "": SubResource("AnimationLibrary_tvp6q")
 }
+
+[node name="cheer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_auya8")
+volume_db = -15.0
+
+[node name="boo" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_3qvqa")
+volume_db = -15.0
 
 [connection signal="area_shape_entered" from="." to="." method="_on_Sad_Match_area_shape_entered"]
 [connection signal="area_shape_exited" from="." to="." method="_on_Sad_Match_area_shape_exited"]
