@@ -47,6 +47,8 @@ func _process(delta):
 		if current_time >= calculate_spawn_time(marker["time"]):
 			spawn_note(marker["note"])
 			current_marker_index += 1 
+	print("hits: ", Global.hit)
+	print("miss: ",  Global.miss)
 
 func calculate_spawn_time(match_time: float) -> float:
 	var distance = $Match/angry_match_marker.global_position.y - $Creation/angry_marker.global_position.y 
@@ -65,7 +67,7 @@ func load_audio():
 	
 	AudioServer.add_bus_effect(AUDIO_BUS_INDEX_MAIN, AudioEffectPitchShift.new())
 	pitch_shift_effect = AudioServer.get_bus_effect(AUDIO_BUS_INDEX_MAIN, 0)
-	pitch_shift_effect.pitch_scale = 1.8
+	pitch_shift_effect.pitch_scale = 1.6
 	
 func load_markers_from_csv(file_path: String):
 	var file = FileAccess.open(file_path, FileAccess.READ)

@@ -6,7 +6,7 @@
 [ext_resource type="FontFile" uid="uid://oyyrn07bj2hj" path="res://assets/font.png" id="4_okqec"]
 [ext_resource type="Texture2D" uid="uid://c4y3s45irlxsx" path="res://assets/logo.png" id="5_d37a6"]
 [ext_resource type="Script" path="res://text.gd" id="5_tv51t"]
-[ext_resource type="PackedScene" uid="uid://cd0dt0fax7g8p" path="res://keys.tscn" id="6_vhlq5"]
+[ext_resource type="PackedScene" path="res://keys.tscn" id="6_vhlq5"]
 [ext_resource type="Texture2D" uid="uid://cmicpww744lyp" path="res://assets/tomato.png" id="8_se4pq"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_lcebt"]
